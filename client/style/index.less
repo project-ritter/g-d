@@ -1,5 +1,61 @@
 @base: #fff;
+@black: #000;
 
 body {
-    background: @base;
+  background: url('../images/login-background.jpg') no-repeat;
+  background-size: cover;
+  font-size: 14px;
+  margin: 0;
+}
+
+.signinpanel {
+  width: 320px;
+  margin: 10px auto 0 auto;
+
+  form {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, .3);
+    padding: 30px;
+    margin-top: 170px;
+
+    h4 {
+      color: @base;
+    }
+
+    p {
+      color: @base;
+      margin: 0 0 10px;
+    }
+
+    .no-margins {
+      margin: 0 !important;
+    }
+
+    .username {
+      background: @base url("../images/user.png") no-repeat 95% center;
+    }
+
+    .password {
+      background: @base url("../images/locked.png") no-repeat 95% center;
+    }
+
+    .m-t-md {
+      margin-top: 20px;
+    }
+
+    .m-b {
+      margin-bottom: 15px;
+    }
+    .btn {
+      margin-top: 15px;
+    }
+
+  }
+  .signup-footer {
+    border-top: solid 1px rgba(255, 255, 255, .3);
+    margin: 20px 0;
+    padding-top: 15px;
+    color: @black;
+  }
+
 }

@@ -58,11 +58,19 @@ export default class Login extends Component {
     if (this.state.name && this.state.password) {
       superagent
         .post('/api/login')
+        .send({
+          name: this.state.name,
+          password: this.state.password
+        })
         .end((err, res) => {
-          if (err) {
-            throw  err;
+          if (res.statusCode != 200) {
+            this.setState({
+              nameError: '用户名或密码不对',
+              passwordError: '用户名或密码不对'
+            });
+          } else {
+            
           }
-
         })
     } else {
       this.setState({

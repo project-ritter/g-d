@@ -7,13 +7,16 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/app.js",
     "webpack": "webpack",
-    "wpw": "webpack -w"
+    "wpw": "webpack -w",
+    "refreshMongo": "node server/tool/refresh-mongo.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.17.1",
     "bootstrap": "^3.3.7",
     "express": "^4.14.0",
+    "mongoose": "^4.9.3",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "redux": "^3.6.0",
@@ -32,6 +35,7 @@
     "html-webpack-plugin": "^2.26.0",
     "less": "^2.7.2",
     "less-loader": "^2.2.3",
+    "nodeman": "^1.1.2",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "2.2.0-rc.2"

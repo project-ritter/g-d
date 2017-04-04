@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 
-import Home from './component/home';
+import Home from './component/menu';
 
 render(
   <div>

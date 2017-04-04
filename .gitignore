@@ -10,6 +10,7 @@
 
 client/dist/*
 client/dist
+public
 
 # Sensitive or high-churn files:
 .idea/dataSources/

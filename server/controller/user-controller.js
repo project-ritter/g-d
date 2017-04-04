@@ -1,3 +1,5 @@
+'use strict'
+
 const user = require('../model/user');
 class User {
   login(req, res, next) {

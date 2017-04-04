@@ -1,1 +1,83 @@
 @import "common";
+
+.no-padding {
+  padding: 0;
+}
+#demo {
+  ul, li {
+    list-style: none;
+  }
+
+  div.head {
+    color: #4b646f;
+    background: #1a2226;
+    padding: 10px 25px;
+    font-size: 12px;
+  }
+}
+
+#header {
+  height: 45px;
+  background-color: #438EB9;
+  color: #FFFFFF;
+  font-size: 1.4em;
+  line-height: 45px;
+
+  .fa-leaf {
+    margin: 0 10px;
+  }
+
+  .nav-user-info {
+    height: 100%;
+    background-color: #62A8D1;
+    &:hover, &:active {
+      background-color: #579ec8;
+      a {
+        text-decoration: none;
+      }
+    }
+    .nav-inline {
+      display: inline-block;
+    }
+
+    .nav-user-photo {
+      margin: -4px 8px 0 15px;
+      border-radius: 100%;
+      border: 2px solid #FFF;
+      max-width: 40px;
+    }
+    .dropdown-menu {
+      min-width: 100%;
+      padding: 5px 15px;
+      margin: 0;
+      padding: 0;
+      li {
+        width: 100%;
+      }
+    }
+
+    .menu-drop {
+      font-size: 16px;
+      a {
+        color: #FFF;
+        font-size: 13px;
+        padding: 0;
+      }
+      li > a {
+        color: #1a2226;
+      }
+      a > button {
+        border: none;
+        width: 100%;
+        padding: 6px;
+        &:hover {
+          background-color: #FEE188;
+        }
+      }
+      a > span {
+        margin: 10px;
+      }
+    }
+
+  }
+}

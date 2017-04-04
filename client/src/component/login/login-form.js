@@ -1,6 +1,6 @@
 import  React, {Component} from 'react';
 import superagent from 'superagent';
-
+import page from 'page';
 import ErrorTip from '../common/error-tip'
 
 class LoginForm extends Component {
@@ -69,7 +69,7 @@ class LoginForm extends Component {
               passwordError: '用户名或密码不对'
             });
           } else {
-
+            page('home.html');
           }
         })
     } else {

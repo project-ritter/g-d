@@ -12,23 +12,21 @@ export default class Header extends Component {
 
   render() {
     return (
-      <div>
-        <div className='header' id='header'>
-          <i className='fa fa-leaf'> </i>
-          TWARS Admin
-          <div className='nav-user-info pull-right'>
-            <a ><font color='white'><i className='fa fa-bell'> </i></font></a>
-            <img className='nav-user-photo nav-inline' src={user} alt='用户头像'/>
-            <NavDropdown eventKey={1} title={'ritter'} id='basic-nav-dropdown'
-                         className='menu-drop no-padding nav-inline'>
-              <MenuItem eventKey={1.1}>
-                <button className='btn btn-default'>
-                  <i className='fa fa-power-off nav-inline'> </i>
-                  &nbsp; 退出
-                </button>
-              </MenuItem>
-            </NavDropdown>
-          </div>
+      <div className='header' id='header'>
+        <i className='fa fa-leaf'> </i>
+        TWARS Admin
+        <div className='nav-user-info pull-right'>
+          <a ><font color='white'><i className='fa fa-bell'> </i></font></a>
+          <img className='nav-user-photo nav-inline' src={user} alt='用户头像'/>
+          <NavDropdown eventKey={1} title={'ritter'} id='basic-nav-dropdown'
+                       className='menu-drop no-padding nav-inline'>
+            <MenuItem eventKey={1.1}>
+              <button className='btn btn-default'>
+                <i className='fa fa-power-off nav-inline'> </i>
+                &nbsp; 退出
+              </button>
+            </MenuItem>
+          </NavDropdown>
         </div>
       </div>
     );

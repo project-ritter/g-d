@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Header from '../common/header';
+import HomeBody from './home-body';
 import '../../../style/home.less'
 
 export default class Home extends Component {
@@ -7,6 +8,7 @@ export default class Home extends Component {
     return (
       <div>
         <Header/>
+        <HomeBody/>
       </div>
     );
   }

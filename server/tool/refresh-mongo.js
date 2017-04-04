@@ -1,8 +1,12 @@
+'use strict'
+
 const mongoose = require('mongoose');
 const rawData = require('./fixture/raw-data');
 const User = require('../model/user');
+const Student = require('../model/student');
 const modelsMap = {
-  User
+  User,
+  Student
 };
 
 let docs = Object.keys(rawData);

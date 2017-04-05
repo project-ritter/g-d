@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 regRouters(app);
 
 app.use('*', (req, res) => {
-  res.sendFile(path.resolve('./public/home.html'));
+  res.sendFile(path.resolve('./public/assets/index.html'));
 });
 
 app.listen(3000, () => {

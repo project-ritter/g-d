@@ -2,7 +2,6 @@ import {Component} from 'react';
 import superagent from 'superagent';
 import noCache from 'superagent-no-cache';
 import StackList from './stack-list';
-import StackEditor from './stack-editor';
 
 export default class StackBody extends Component {
   constructor(props) {
@@ -30,9 +29,20 @@ export default class StackBody extends Component {
     this.requestStacks();
   }
 
+  reportStudentCSV() {
+    superagent
+      .get('/api/report/student-csv')
+      .use(noCache)
+      .end((err, res) => {
+        console.log(err)
+        console.log('csv')
+      })
+  }
+
   render() {
     return (
       <div className='stack-body row'>
+        <button type="button" onClick={this.reportStudentCSV.bind(this)}>导出名单</button>
         <StackList stacks={this.state.stacks}/>
       </div>
     );

@@ -1,5 +1,5 @@
 import {Component} from 'react';
-import '../../style/login.less';
+import '../../style/logint.less';
 import Title from './Title';
 import LoginForm from './LoginForm';
 

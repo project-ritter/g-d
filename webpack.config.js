@@ -11,6 +11,7 @@ var pathToBootstarp = path.resolve(node_modules, 'bootstrap/dist/');
 var config = {
   entry: {
     'index': './client/src/main.js',
+    'login': './client/src/login.js',
     'vendors': ['bootstrap.css', 'react', 'react-dom', 'font-awesome.css']
   },
   output: {
@@ -95,5 +96,6 @@ function htmlwebpackPluginBuilder(fileName, deps) {
 }
 
 config.plugins.push(htmlwebpackPluginBuilder('index.html', ['vendors', 'index']));
+config.plugins.push(htmlwebpackPluginBuilder('login.html', ['vendors', 'login']));
 
 module.exports = config;

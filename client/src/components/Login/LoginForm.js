@@ -3,6 +3,7 @@ import {InputWrapper} from '../common';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
 import superagent from 'superagent';
+import page from 'page';
 
 class LoginForm extends Component {
 
@@ -53,14 +54,21 @@ class LoginForm extends Component {
           password: this.state.password
         })
         .end((err, res) => {
+
           if (res.statusCode !== 200) {
+            this.setState({
+              accountError: '用户名或密码有误',
+              passwordError: '用户名或密码有误'
+            });
             console.log('fail')
+          } else {
+            page('/');
           }
         })
     } else {
       this.setState({
-        accountError: '用户名或密码有误',
-        passwordError: '用户名或密码有误'
+        accountError: '用户名不能为空',
+        passwordError: '密码不能为空'
       });
     }
   }

@@ -10,7 +10,8 @@
     "wpw": "webpack -w",
     "eslint": "eslint .",
     "prebuild": "eslint .",
-    "build": "webpack"
+    "build": "webpack",
+    "refreshMongo":"node ./server/tool/refresh-mongo.js"
   },
   "author": "",
   "license": "ISC",

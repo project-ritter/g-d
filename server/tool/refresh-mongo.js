@@ -3,10 +3,15 @@
 const mongoose = require('mongoose');
 const rawData = require('./fixture/raw-data');
 const User = require('../model/user');
+const Course = require('../model/course');
 const Student = require('../model/student');
+const Score = require('../model/score');
+
 const modelsMap = {
   User,
-  Student
+  Student,
+  Course,
+  Score
 };
 
 let docs = Object.keys(rawData);

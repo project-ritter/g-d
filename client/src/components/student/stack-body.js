@@ -11,7 +11,7 @@ export default class StackBody extends Component {
     };
   }
 
-  requestStacks() {
+  requestStudents() {
     superagent
       .get('/api/students')
       .use(noCache)
@@ -26,23 +26,21 @@ export default class StackBody extends Component {
   }
 
   componentDidMount() {
-    this.requestStacks();
+    this.requestStudents();
   }
 
   reportStudentCSV() {
     superagent
       .get('/api/report/student-csv')
-      .use(noCache)
       .end((err, res) => {
-        console.log(err)
-        console.log('csv')
+        console.log('send success');
       })
   }
 
   render() {
     return (
       <div className='stack-body row'>
-        <button type="button" onClick={this.reportStudentCSV.bind(this)}>导出名单</button>
+        <a target="_blank" href={"localhost:3000/api/report/student-csv"}>导出名单</a>
         <StackList stacks={this.state.stacks}/>
       </div>
     );

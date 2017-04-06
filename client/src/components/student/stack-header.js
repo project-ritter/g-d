@@ -4,7 +4,7 @@ export default class StackHeader extends Component {
   render() {
     return (
       <div className='stack-header'>
-        技术栈管理
+        学生管理
       </div>
     );
   }

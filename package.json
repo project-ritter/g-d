@@ -11,7 +11,8 @@
     "eslint": "eslint .",
     "prebuild": "eslint .",
     "build": "webpack",
-    "refreshMongo":"node ./server/tool/refresh-mongo.js"
+    "refreshMongo": "node ./server/tool/refresh-mongo.js",
+    "readXlsx": "node ./server/shell/read-xlsx.js"
   },
   "author": "",
   "license": "ISC",
@@ -27,10 +28,12 @@
     "express": "^4.14.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "font-awesome": "^4.7.0",
+    "fs": "0.0.1-security",
     "html-webpack-plugin": "^2.24.0",
     "moment": "^2.17.1",
     "mongoose": "^4.9.3",
     "node-uuid": "^1.4.7",
+    "node-xlsx": "^0.7.4",
     "page": "^1.7.1",
     "react": "^15.4.2",
     "react-bootstrap": "^0.30.5",

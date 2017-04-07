@@ -11,6 +11,7 @@ import Login from './components/Login';
 import {cookie} from 'react-cookie-banner';
 import Student from './components/student';
 import Home from './components/menu/Home';
+import Score from './components/score';
 
 const store = createStore(
   rootReducer,
@@ -27,8 +28,8 @@ class Main extends Component {
         <Route path='/' component={Layout}>
           <IndexRoute components={Home}/>
           <Route path='index' component={Home}/>
-          <Route path='students'>
-            <IndexRoute component={Student}/>
+          <Route path='score'>
+            <IndexRoute component={Score}/>
           </Route>
         </Route>
       </Router>

@@ -1,19 +1,25 @@
 'use strict'
 
 const mongoose = require('mongoose');
-const rawData = require('./fixture/raw-data');
+let rawData = require('./fixture/raw-data');
 const User = require('../model/user');
 const Course = require('../model/course');
 const Student = require('../model/student');
 const Score = require('../model/score');
+const Grade = require('../model/grade');
+
+const xls = require('../shell/read-xlsx');
 
 const modelsMap = {
   User,
   Student,
   Course,
-  Score
+  Score,
+  Grade
 };
 
+console.log(xls())
+rawData.Grade = xls();
 let docs = Object.keys(rawData);
 
 mongoose.connect('mongodb://localhost/design');

@@ -24,15 +24,15 @@ export default [
     id: 4,
     parent: 1,
     level: 2,
-    text: '课程管理',
-    uri: '/course',
+    text: '成绩分析',
+    uri: '/score',
     icon: 'book'
   }, {
     id: 5,
     parent: 1,
     level: 2,
-    text: '成绩管理',
-    uri: '/score',
+    text: '试卷分析',
+    uri: '/paper',
     icon: 'user'
   }
 ];

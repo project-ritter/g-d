@@ -28,6 +28,9 @@ class Main extends Component {
         <Route path='/' component={Layout}>
           <IndexRoute components={Home}/>
           <Route path='index' component={Home}/>
+          <Route path='students'>
+            <IndexRoute component={Student}/>
+          </Route>
           <Route path='score'>
             <IndexRoute component={Score}/>
           </Route>

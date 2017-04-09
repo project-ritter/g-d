@@ -6,6 +6,10 @@ import thunkMiddleware from 'redux-thunk';
 import rootReducer from './reducers/index.js';
 import {Provider, connect} from 'react-redux';
 import createLogger from 'redux-logger';
+import superagent from 'superagent';
+import noCache from 'superagent-no-cache';
+import page from 'page';
+
 import Layout from './containers/menu/layout';
 import Login from './components/Login';
 import {cookie} from 'react-cookie-banner';
@@ -19,13 +23,29 @@ const store = createStore(
 );
 
 class Main extends Component {
+  check() {
+    superagent
+      .get('/api/login')
+      .use(noCache)
+      .end((err, res) => {
+        if (err) {
+          page('/login');
+        }
+        if (res.statusCode !== 200) {
+          page('/login');
+        }else if (res.statusCode === 200) {
+          page('/');
 
+        }
+      });
+
+  }
 
   render() {
     return (
       <Router history={browserHistory}>
         <Route path='/login' component={Login}/>
-        <Route path='/' component={Layout}>
+        <Route path='/' component={Layout} onEnter={this.check}>
           <IndexRoute components={Home}/>
           <Route path='index' component={Home}/>
           <Route path='students'>

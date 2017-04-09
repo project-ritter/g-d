@@ -1,10 +1,92 @@
 import React, {Component} from 'react';
+import superagent from 'superagent';
+import noCache from 'superagent-no-cache';
 
 export default class ScoreAnalyse extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      endAverage: 0,
+      totalAverage: 0,
+      result: [0, 0, 0, 0, 0],
+      len: 0,
+      s: 0
+    };
+  }
+
+  componentDidMount() {
+    superagent
+      .get('/api/grades/analyse')
+      .use(noCache)
+      .end((err, res) => {
+        if (err) {
+          throw err;
+        }
+        let {endAverage, totalAverage, result, len, s} = res.body;
+        this.setState({
+          endAverage,
+          totalAverage,
+          result,
+          len,
+          s
+        });
+
+      })
+  }
+
   render() {
     return (
       <div>
-        成绩分析结果
+
+        <table>
+          <caption>成绩分析结果</caption>
+          <tbody>
+          <tr>
+            <th>成绩等级</th>
+            <th>人数</th>
+            <th>所占比例</th>
+          </tr>
+          <tr>
+            <th>90-100（优秀）</th>
+            <th>{this.state.result[0]}</th>
+            <th>{this.state.result[0] / this.state.len * 100 + '%'}</th>
+          </tr>
+
+          <tr>
+            <th>80-89（良好）</th>
+            <th>{this.state.result[1]}</th>
+            <th>{this.state.result[2] / this.state.len * 100 + '%'}</th>
+          </tr>
+
+          <tr>
+            <th>70-79（中等）</th>
+            <th>{this.state.result[2]}</th>
+            <th>{this.state.result[2] / this.state.len * 100 + '%'            }</th>
+          </tr>
+
+          <tr>
+            <th>60-69（及格）</th>
+            <th>{this.state.result[3]}</th>
+            <th>{this.state.result[3] / this.state.len * 100 + '%'}</th>
+          </tr>
+
+          <tr>
+            <th>{"<60"}（不及格）</th>
+            <th>{this.state.result[4]}</th>
+            <th>{this.state.result[4] / this.state.len * 100 + '%'}</th>
+          </tr>
+
+          <tr>
+            <th>平均值</th>
+            <th>{this.state.totalAverage}</th>
+          </tr>
+
+          <tr>
+            <th>标准差</th>
+            <th>{this.state.s}</th>
+          </tr>
+          </tbody>
+        </table>
       </div>
     );
   }

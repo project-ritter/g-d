@@ -36,54 +36,61 @@ export default class ScoreAnalyse extends Component {
 
   render() {
     return (
-      <div>
+      <div className="stack-table">
+        <div className="text-center">成绩分析结果
+          <a className="pull-right" target="_blank" href={"localhost:3000/api/report/student-csv"}>
+            表格导出<i className="fa fa-share"></i></a>
+        </div>
 
-        <table>
-          <caption>成绩分析结果</caption>
-          <tbody>
+        <table className="table table-bordered table-striped table-hover">
+
+          <thead>
           <tr>
             <th>成绩等级</th>
             <th>人数</th>
             <th>所占比例</th>
           </tr>
+          </thead>
+          <tbody className="table-body">
+
           <tr>
             <th>90-100（优秀）</th>
             <th>{this.state.result[0]}</th>
-            <th>{this.state.result[0] / this.state.len * 100 + '%'}</th>
+            <th>{(this.state.result[0] / this.state.len * 100).toFixed(2) + '%'}</th>
           </tr>
 
           <tr>
             <th>80-89（良好）</th>
             <th>{this.state.result[1]}</th>
-            <th>{this.state.result[2] / this.state.len * 100 + '%'}</th>
+            <th>{(this.state.result[2] / this.state.len * 100).toFixed(2) + '%'}</th>
           </tr>
 
           <tr>
             <th>70-79（中等）</th>
             <th>{this.state.result[2]}</th>
-            <th>{this.state.result[2] / this.state.len * 100 + '%'            }</th>
+            <th>{(this.state.result[2] / this.state.len * 100).toFixed(2) + '%'}</th>
           </tr>
 
           <tr>
             <th>60-69（及格）</th>
             <th>{this.state.result[3]}</th>
-            <th>{this.state.result[3] / this.state.len * 100 + '%'}</th>
+            <th>{(this.state.result[3] / this.state.len * 100).toFixed(2) + '%'}</th>
           </tr>
 
           <tr>
             <th>{"<60"}（不及格）</th>
             <th>{this.state.result[4]}</th>
-            <th>{this.state.result[4] / this.state.len * 100 + '%'}</th>
+            <th>{(this.state.result[4] / this.state.len * 100).toFixed(2) + '%'}</th>
           </tr>
 
           <tr>
             <th>平均值</th>
-            <th>{this.state.totalAverage}</th>
+            <th colSpan="2">{this.state.totalAverage}</th>
           </tr>
 
           <tr>
             <th>标准差</th>
-            <th>{this.state.s}</th>
+            <th colSpan="2">{this.state.s}</th>
           </tr>
           </tbody>
         </table>

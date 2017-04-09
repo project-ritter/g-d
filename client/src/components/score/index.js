@@ -33,10 +33,10 @@ export default class Score extends Component {
       <div className="stack">
         <ScoreHeader/>
 
-        <div className="col-sm-8">
+        <div className="col-sm-8 no-padding">
           <ScoreList scores={this.state.scores}/>
         </div>
-        <div className="sol-sm-4">
+        <div className="col-sm-4">
           <SocreAnalyse/>
         </div>
       </div>

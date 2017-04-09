@@ -35,7 +35,6 @@ class GradeController {
         let endSum = 0;
         let sum = 0;
         data.forEach(({end, total}) => {
-          console.log(end, total)
           endSum += end;
           sum += total;
           if (total >= 90) {
@@ -51,9 +50,18 @@ class GradeController {
           }
         });
 
-        endAverage = endSum / len;
-        totalAverage = sum / len;
-        done(null, null);
+        endAverage = ( endSum / len).toFixed(2);
+        totalAverage = (sum / len).toFixed(2);
+        done(null, data);
+      },
+      (data, done) => {
+
+        let s2 = 0;
+        data.forEach(({total}) => {
+          s2 += (total - endAverage) * (total - endAverage);
+        });
+        s = (Math.sqrt(s2 / len)).toFixed(2);
+        done(null, s);
       }], (err) => {
       if (err) {
         return next(err);

@@ -16,6 +16,7 @@ import {cookie} from 'react-cookie-banner';
 import Student from './components/student';
 import Home from './components/menu/Home';
 import Score from './components/score';
+import Paper from './components/paper';
 
 const store = createStore(
   rootReducer,
@@ -33,7 +34,7 @@ class Main extends Component {
         }
         if (res.statusCode !== 200) {
           page('/login');
-        }else if (res.statusCode === 200) {
+        } else if (res.statusCode === 200) {
           page('/');
 
         }
@@ -45,7 +46,7 @@ class Main extends Component {
     return (
       <Router history={browserHistory}>
         <Route path='/login' component={Login}/>
-        <Route path='/' component={Layout} onEnter={this.check}>
+        <Route path='/' component={Layout} >
           <IndexRoute components={Home}/>
           <Route path='index' component={Home}/>
           <Route path='students'>
@@ -53,6 +54,9 @@ class Main extends Component {
           </Route>
           <Route path='score'>
             <IndexRoute component={Score}/>
+          </Route>
+          <Route path='paper'>
+            <IndexRoute component={Paper}/>
           </Route>
         </Route>
       </Router>

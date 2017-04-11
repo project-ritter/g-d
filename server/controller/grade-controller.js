@@ -5,12 +5,28 @@ const Grade = require('../model/grade');
 
 class GradeController {
   getAll(req, res, next) {
-    Grade.find({}, (err, docs) => {
-      if (err) {
-        return next(err);
-      }
-      return res.status(200).send(docs);
-    });
+    let {currentPage = 1, pageCount = 10}= req.query;
+    let skipCount = pageCount * (currentPage - 1);
+    async.series({
+        items: (done) => {
+          Grade.find({}).limit(Number(pageCount)).skip(skipCount).exec((err, data) => {
+            done(err, data);
+          });
+        },
+        totalPage: (done) => {
+          Grade.count((err, data) => {
+            let count = Math.ceil(data / pageCount);
+            done(err, count);
+          });
+        }
+      },
+      (err, result) => {
+        if (err) {
+          return next(err);
+        }
+        return res.status(200).send(result);
+
+      });
   }
 
   gradeAnalyse(req, res, next) {

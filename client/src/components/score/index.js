@@ -10,22 +10,42 @@ export default class Score extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      scores: []
+      scores: [],
+      totalPage: 1,
+      currentPage: 1,
+      pageCount: 15
     };
   }
 
-  componentDidMount() {
+  requestData() {
     superagent
       .get('/api/grades')
+      .query({
+        currentPage: this.state.currentPage,
+        pageCount: this.state.pageCount
+      })
       .use(noCache)
       .end((err, res) => {
         if (err) {
           throw err;
         }
         this.setState({
-          scores: res.body
+          scores: res.body.items,
+          totalPage: res.body.totalPage
         });
       })
+  }
+
+  componentDidMount() {
+    this.requestData();
+  }
+
+  handlePage(page) {
+    this.setState({
+      currentPage: page
+    }, () => {
+      this.requestData();
+    });
   }
 
   render() {
@@ -34,7 +54,9 @@ export default class Score extends Component {
         <ScoreHeader/>
 
         <div className="col-sm-6 no-padding">
-          <ScoreList scores={this.state.scores}/>
+          <ScoreList scores={this.state.scores}
+                     onPageChange={this.handlePage.bind(this)}
+                     totalPage={this.state.totalPage}/>
         </div>
         <div className="col-sm-6">
           <SocreAnalyse/>

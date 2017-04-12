@@ -51,7 +51,7 @@ export default class ScoreAnalyse extends Component {
     return (
       <div className="stack-table">
 
-        <div className="text-center">成绩分析结果
+        <div className="text-center analyse-header">成绩分析结果
           <a className="pull-right" target="_blank" href={"localhost:3000/api/report/grade"}>
             表格导出<i className="fa fa-share"></i></a>
         </div>

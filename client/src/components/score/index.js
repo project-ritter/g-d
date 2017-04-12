@@ -13,7 +13,7 @@ export default class Score extends Component {
       scores: [],
       totalPage: 1,
       currentPage: 1,
-      pageCount: 15
+      pageCount: 17
     };
   }
 

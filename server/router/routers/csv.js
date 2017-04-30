@@ -5,7 +5,6 @@ const router = express.Router();
 const csvCtrl = new CSVController();
 
 router.get('/student-csv', csvCtrl.studentCSV);
-router.get('/grade-analyse-csv', csvCtrl.gradeAnalyseCSV);
 router.get('/grade', csvCtrl.gradeCSV);
 
 module.exports = router;

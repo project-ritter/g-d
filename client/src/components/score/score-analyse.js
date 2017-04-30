@@ -111,7 +111,7 @@ export default class ScoreAnalyse extends Component {
 
         <div>
           <PieChart data={pieResult} width={450} height={400} radius={110} innerRadius={20} sectorBorderColor="white"
-                    title='饼形图'/>
+                    title=''/>
         </div>
 
       </div>

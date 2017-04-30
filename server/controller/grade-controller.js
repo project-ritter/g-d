@@ -43,7 +43,6 @@ class GradeController {
         len = data.length;
         data = data.map(({end, total}) => {
           return {end, total};
-
         });
         done(null, data);
       },
@@ -63,6 +62,13 @@ class GradeController {
             result[3]++;
           } else {
             result[4]++;
+          }
+        });
+
+        result = result.map((item) => {
+          return {
+            count: item,
+            percent: (item / len * 100).toFixed(2)
           }
         });
 

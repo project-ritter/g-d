@@ -14,7 +14,7 @@ export default class ScoreAnalyse extends Component {
     this.state = {
       endAverage: 0,
       totalAverage: 0,
-      result: [0, 0, 0, 0, 0],
+      result: [],
       len: 0,
       s: 0
     };
@@ -33,7 +33,7 @@ export default class ScoreAnalyse extends Component {
         for (let i = 0; i < result.length; ++i) {
           pieResult[i] = {
             label: score[i],
-            value: result[i]
+            value: result[i].percent
           }
         }
         this.setState({
@@ -67,36 +67,21 @@ export default class ScoreAnalyse extends Component {
           </thead>
           <tbody className="table-body">
 
-          <tr>
-            <th>90-100（优秀）</th>
-            <th>{this.state.result[0]}</th>
-            <th>{(this.state.result[0] / this.state.len * 100).toFixed(2) + '%'}</th>
-          </tr>
+          {
+            score.map((item, index) => {
+              if (this.state.result.length > 0) {
+                return (
+                  <tr key={index}>
+                    <th>{item}</th>
+                    <th>{this.state.result[index].count}</th>
+                    <th>{this.state.result[index].percent + '%'}</th>
+                  </tr>
+                );
+              }
 
-          <tr>
-            <th>80-89（良好）</th>
-            <th>{this.state.result[1]}</th>
-            <th>{(this.state.result[1] / this.state.len * 100).toFixed(2) + '%'}</th>
-          </tr>
-
-          <tr>
-            <th>70-79（中等）</th>
-            <th>{this.state.result[2]}</th>
-            <th>{(this.state.result[2] / this.state.len * 100).toFixed(2) + '%'}</th>
-          </tr>
-
-          <tr>
-            <th>60-69（及格）</th>
-            <th>{this.state.result[3]}</th>
-            <th>{(this.state.result[3] / this.state.len * 100).toFixed(2) + '%'}</th>
-          </tr>
-
-          <tr>
-            <th>{"<60"}（不及格）</th>
-            <th>{this.state.result[4]}</th>
-            <th>{(this.state.result[4] / this.state.len * 100).toFixed(2) + '%'}</th>
-          </tr>
-
+            })
+          }
+          
           <tr>
             <th>平均值</th>
             <th colSpan="2">{this.state.totalAverage}</th>

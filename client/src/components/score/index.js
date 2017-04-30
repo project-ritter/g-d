@@ -55,6 +55,7 @@ export default class Score extends Component {
 
         <div className="col-sm-6 no-padding">
           <ScoreList scores={this.state.scores}
+                     currentPage={this.state.currentPage}
                      onPageChange={this.handlePage.bind(this)}
                      totalPage={this.state.totalPage}/>
         </div>

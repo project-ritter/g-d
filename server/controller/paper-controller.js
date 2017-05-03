@@ -3,7 +3,20 @@
 const async = require('async');
 const PaperScore = require('../model/paperScore');
 
+function getAllTotal(data) {
+  let total = [];
+  total.push(data[0].one.total);
+  total.push(data[0].two.total);
+  total.push(data[0].three.total);
+  total.push(data[0].four.total);
+  total.push(data[0].five.total);
+  total.push(data[0].six.total);
+  return total;
+}
+
 class PaperController {
+
+
   caculateDifficult(req, res, next) {
 
     let result = [0, 0, 0, 0, 0, 0,];
@@ -13,12 +26,7 @@ class PaperController {
         PaperScore.find({}, done);
       },
       (data, done) => {
-        total.push(data[0].one.total);
-        total.push(data[0].two.total);
-        total.push(data[0].three.total);
-        total.push(data[0].four.total);
-        total.push(data[0].five.total);
-        total.push(data[0].six.total);
+        total = getAllTotal(data);
 
         data.map(item => {
           result[0] += item.one.score;
@@ -35,7 +43,6 @@ class PaperController {
           }
         });
 
-
         done(null, data);
       }
     ], (err) => {
@@ -44,6 +51,10 @@ class PaperController {
       }
       return res.status(200).send(result);
     });
+  }
+
+  caculateDistinct(req, res, next) {
+
   }
 
 }

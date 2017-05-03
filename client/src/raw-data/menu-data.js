@@ -14,13 +14,6 @@ export default [
     uri: '/index',
     icon: 'home'
   }, {
-    id: 3,
-    parent: 1,
-    level: 2,
-    text: '学生管理',
-    uri: '/students',
-    icon: 'user-circle'
-  }, {
     id: 4,
     parent: 1,
     level: 2,

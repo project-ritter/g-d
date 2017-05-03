@@ -7,19 +7,23 @@ const Course = require('../model/course');
 const Student = require('../model/student');
 const Score = require('../model/score');
 const Grade = require('../model/grade');
+const PaperScore = require('../model/paperScore');
 
 const xls = require('../shell/read-xlsx');
+const paperScoreXls = require('../shell/paper-score-xlsx');
 
 const modelsMap = {
   User,
   Student,
   Course,
   Score,
-  Grade
+  Grade,
+  PaperScore
 };
 
-console.log(xls())
 rawData.Grade = xls();
+rawData.PaperScore = paperScoreXls();
+
 let docs = Object.keys(rawData);
 
 mongoose.connect('mongodb://localhost/design');

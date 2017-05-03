@@ -1,7 +1,5 @@
 const xlsx = require("node-xlsx");
 const fs = require("fs");
-const async = require("async");
-const Grade = require('../model/grade');
 
 function readXlsx() {
   const workSheetsFromBuffer = xlsx.parse(fs.readFileSync(`${__dirname}/1501.xlsx`));

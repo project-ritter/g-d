@@ -65,7 +65,7 @@ export default class Difficult extends Component {
               {
                 this.state.difficult.map((item, index) => {
                   return (
-                    <td>{item.y}</td>
+                    <td key={index * 9}>{item.y}</td>
                   );
                 })
               }

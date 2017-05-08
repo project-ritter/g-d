@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 
 import PaperHeader from './paper-header';
-import Diffcult from './diffcult';
+import Difficult from './difficult';
+import Distinct from './distinct';
 
 export default class Paper extends Component {
   render() {
@@ -11,7 +12,8 @@ export default class Paper extends Component {
       <div className="stack">
 
         <PaperHeader/>
-        <Diffcult/>
+        <Difficult/>
+        <Distinct/>
 
       </div>
     );

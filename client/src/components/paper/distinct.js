@@ -1,8 +1,8 @@
 import {Component} from 'react';
-import {ScatterChart} from 'react-d3';
+import {BarChart} from 'react-d3';
 import superagent from 'superagent';
 
-// const  = rd3.ScatterChart;
+// const  = rd3.BarChart;
 
 export default class Distinct extends Component {
 
@@ -35,17 +35,13 @@ export default class Distinct extends Component {
   }
 
   render() {
-    console.log(this.state.scatterData)
     return (
       <div>
 
         <div className="col-sm-6">
-          <ScatterChart
-            data={this.state.scatterData}
-            width={500}
-            height={400}
-            title="Scatter Chart"
-          />
+          <BarChart data={this.state.scatterData} width={500} height={300}
+                    title="区分度分析结果" yAxisLabel=""
+                    xAxisLabel=''/>
         </div>
 
         <div className="col-sm-6 difficult">
@@ -87,8 +83,7 @@ export default class Distinct extends Component {
             <p>0.19以下 劣、必须淘汰或改进 </p>
           </div>
         </div>
-
-
+        
       </div>
     );
   }

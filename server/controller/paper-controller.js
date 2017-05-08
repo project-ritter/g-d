@@ -14,8 +14,50 @@ function getAllTotal(data) {
   return total;
 }
 
-class PaperController {
+const mapKey = [{
+  key: 'one',
+  value: 1
+}, {
+  key: 'two',
+  value: 2
+}, {
+  key: 'three',
+  value: 3
+}, {
+  key: 'four',
+  value: 4
+}, {
+  key: 'five',
+  value: 5
+}, {
+  key: 'six',
+  value: 6
+}];
 
+const getDistinct = (callback) => {
+  let total, len;
+  async.waterfall([
+    (done) => {
+      PaperScore.find({}).sort({'one.score': 1}).exec(done);
+    },
+    (data, done) => {
+      total = getAllTotal(data);
+      len = parseInt(data.length * 0.27);
+      let low = 0;
+      let high = 0;
+      for (let i = 0; i < len; ++i) {
+        low += data[i]['one'].score;
+        high += data[data.length - i - 1]['one'].score;
+      }
+      low = low / len;
+      high = high / len;
+      let aver = ((high - low) / data.length).toFixed(2);
+      done(null, aver);
+    }
+  ], callback);
+};
+
+class PaperController {
 
   caculateDifficult(req, res, next) {
 
@@ -54,6 +96,10 @@ class PaperController {
   }
 
   caculateDistinct(req, res, next) {
+    let result = [];
+    getDistinct((err, doc) => {
+      result.push(doc);
+    });
 
   }
 

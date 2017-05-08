@@ -105,6 +105,13 @@ class PaperController {
       if (err) {
         return next(err);
       }
+
+      result = result.map((item, index) => {
+        return {
+          x: '第 ' + (index + 1 ) + ' 题',
+          y: item
+        }
+      });
       return res.status(200).send(result);
     });
   }

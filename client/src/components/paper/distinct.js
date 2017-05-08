@@ -78,6 +78,14 @@ export default class Distinct extends Component {
             </tbody>
 
           </table>
+
+          <div className="title">
+            <h3>区分度评价标准：</h3>
+            <p> 0.40以上 非常良好 </p>
+            <p> 0.30--0.39 良好、如能改进更好 </p>
+            <p>0.20--0.29 尚可、用时需作改进</p>
+            <p>0.19以下 劣、必须淘汰或改进 </p>
+          </div>
         </div>
 
 

@@ -73,6 +73,14 @@ export default class Difficult extends Component {
             </tbody>
 
           </table>
+
+          <div className="title">
+            <h3>难度评价标准：</h3>
+            <p>
+              试题的难度指数在0.3－0.7之间比较合适，整份试卷的平均难度最好在0.5左右，高于0.7和低于0.3的试题不能太多。
+            </p>
+          </div>
+
         </div>
 
       </div>

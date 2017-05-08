@@ -61,7 +61,7 @@ const getDistinct = ({key, result}, callback) => {
 
 class PaperController {
 
-  caculateDifficult(req, res, next) {
+  calculateDifficult(req, res, next) {
 
     let result = [0, 0, 0, 0, 0, 0,];
     let total = [];
@@ -97,7 +97,7 @@ class PaperController {
     });
   }
 
-  caculateDistinct(req, res, next) {
+  calculateDistinct(req, res, next) {
     let result = [];
     async.each(mapKey, (item, callback) => {
       getDistinct({key: item.key, result}, callback);
@@ -115,6 +115,11 @@ class PaperController {
       return res.status(200).send(result);
     });
   }
+
+  calculateValidate(req, res, next) {
+
+  }
+
 }
 
 module.exports = PaperController;

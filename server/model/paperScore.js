@@ -25,8 +25,8 @@ const paperScoreSchema = new Schema({
   six: {
     score: Number,
     total: Number
-  }
-
+  },
+  total: Number
 });
 
 const PaperScore = mongoose.model('PaperScore', paperScoreSchema);

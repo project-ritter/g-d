@@ -83,7 +83,7 @@ export default class Distinct extends Component {
             <p>0.19以下 劣、必须淘汰或改进 </p>
           </div>
         </div>
-        
+
       </div>
     );
   }

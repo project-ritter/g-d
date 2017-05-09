@@ -28,12 +28,12 @@ class User {
     let cks = ck.split(';');
 
     cks = cks[0].split('=');
-    let sectionId = cks[1];
+    let sessionId = cks[1];
 
-    if (sectionId.length > 36) {
+    if (sessionId.length > 36) {
       return res.sendStatus(403);
     }
-    Token.findOne({token: sectionId}, (err, doc) => {
+    Token.findOne({token: sessionId}, (err, doc) => {
       if (err) {
         return next(err)
       }

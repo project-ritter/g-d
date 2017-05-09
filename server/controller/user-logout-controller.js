@@ -1,8 +1,20 @@
+const Token = require('../model/token');
+
 class UserLogoutController {
   logout(req, res, next) {
+    let ck = req.headers.cookie;
+    let cks = ck.split(';');
 
-    res.clearCookie('');
-    res.sendStatus(200);
+    cks = cks[0].split('=');
+    let sessionId = cks[1];
+
+    Token.findOneAndRemove({token: sessionId}, (err, doc) => {
+      if (err) {
+        return next(err);
+      }
+      res.clearCookie('sessionId');
+      res.sendStatus(200);
+    });
   }
 
 }

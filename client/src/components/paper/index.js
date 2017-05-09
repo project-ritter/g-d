@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import PaperHeader from './paper-header';
 import Difficult from './difficult';
 import Distinct from './distinct';
+import Validate from './validate';
 
 export default class Paper extends Component {
   render() {
@@ -14,6 +15,7 @@ export default class Paper extends Component {
         <PaperHeader/>
         <Difficult/>
         <Distinct/>
+        <Validate/>
 
       </div>
     );

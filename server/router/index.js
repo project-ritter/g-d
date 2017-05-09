@@ -4,9 +4,11 @@ const csv = require('./routers/csv');
 const course = require('./routers/course');
 const grade = require('./routers/grade');
 const paperScore = require('./routers/paper-score');
+const logout = require('./routers/logout');
 
 module.exports = function (app) {
   app.use('/api/login', user);
+  app.use('/api/logout', logout);
   app.use('/api/students', student);
   app.use('/api/report', csv);
   app.use('/api/courses', course);

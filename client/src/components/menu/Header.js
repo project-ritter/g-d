@@ -3,6 +3,7 @@ import {NavDropdown, MenuItem} from 'react-bootstrap';
 import user from '../../images/user.jpg';
 import superagent from 'superagent';
 import noCache from 'superagent-no-cache';
+import page from 'page';
 
 export default class Header extends Component {
   constructor(props) {
@@ -13,7 +14,12 @@ export default class Header extends Component {
   }
 
   exitUser() {
-    this.props.exit();
+    superagent
+      .get('/api/logout')
+      .use(noCache)
+      .end((err, res) => {
+        page('/login');
+      })
   }
 
   render() {

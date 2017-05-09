@@ -1,8 +1,6 @@
 import {Component} from 'react';
-import {BarChart} from 'react-d3';
+import {ScatterChart} from 'react-d3';
 import superagent from 'superagent';
-
-// const  = rd3.BarChart;
 
 export default class Distinct extends Component {
 
@@ -12,7 +10,7 @@ export default class Distinct extends Component {
       distinct: [],
       scatterData: [{
         name: '',
-        values: []
+        values: [{x: 0, y: 0}]
       }]
     };
   }
@@ -39,9 +37,9 @@ export default class Distinct extends Component {
       <div>
 
         <div className="col-sm-6">
-          <BarChart data={this.state.scatterData} width={500} height={300}
-                    title="区分度分析结果" yAxisLabel=""
-                    xAxisLabel=''/>
+          <ScatterChart data={this.state.scatterData} width={500} height={300}
+                        title="区分度分析结果" yAxisLabel="区分度"
+                        xAxisLabel='题号'/>
         </div>
 
         <div className="col-sm-6 difficult">

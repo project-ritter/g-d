@@ -1,6 +1,6 @@
 import {Component} from 'react';
 import '../../style/demo.less';
-import Header from '../../containers/menu/header';
+import Header from './Header';
 import LeftNav from '../../containers/menu/left-nav';
 import BreadCrumb from '../../containers/menu/breadcrumb';
 

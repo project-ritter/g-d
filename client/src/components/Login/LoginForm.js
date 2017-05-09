@@ -1,5 +1,5 @@
 import {Component} from 'react';
-import {InputWrapper} from '../common';
+import InputWrapper from '../common/InputWrapper';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
 import superagent from 'superagent';

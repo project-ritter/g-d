@@ -38,7 +38,7 @@ export default class Distinct extends Component {
 
         <div className="col-sm-6">
           <ScatterChart data={this.state.scatterData} width={500} height={300}
-                        title="区分度分析结果" yAxisLabel="区分度"
+                        title="区分度分析结果" yAxisLabel=""
                         xAxisLabel='题号'/>
         </div>
 

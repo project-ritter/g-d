@@ -59,6 +59,36 @@ const getDistinct = ({key, result}, callback) => {
   ], callback);
 };
 
+const validateKey = ['total', 'one', 'two', 'three', 'four', 'five', 'six'];
+
+const getValidate = ({docs, item}) => {
+  if (item !== 'total') {
+    let sum = docs.reduce((a, b) => {
+      return a + b[item]['score'];
+    }, 0);
+
+    let s = 0;
+    docs.forEach(item => {
+      s += Math.pow(item.total - sum / docs.length, 2);
+    });
+
+    return Math.sqrt(s / docs.length).toFixed(2);
+  } else {
+
+    let sum = docs.reduce((a, b) => {
+      return a + b[item];
+    }, 0);
+
+    let s = 0;
+    docs.forEach(item => {
+      s += Math.pow(item.total - sum / docs.length, 2);
+    });
+
+    return Math.sqrt(s / docs.length).toFixed(2);
+  }
+
+};
+
 class PaperController {
 
   calculateDifficult(req, res, next) {
@@ -118,6 +148,39 @@ class PaperController {
 
   calculateValidate(req, res, next) {
 
+    let result = [];
+    let len;
+
+    async.waterfall([
+      (done) => {
+        PaperScore.find({}, done);
+      },
+      (docs, done) => {
+        validateKey.forEach((item) => {
+          result.push(getValidate({docs, item}));
+        });
+        done(null, result);
+      },
+      (result, done) => {
+        let validates = [];
+        len = result.length;
+        for (let i = 1; i < result.length; ++i) {
+          validates.push(Math.abs((len * (1 - result[0] / result[i] ) / (len - 1)).toFixed(2)));
+        }
+        done(null, validates);
+      }
+    ], (err, result) => {
+      if (err) {
+        return next(err);
+      }
+      result = result.map((item, index) => {
+        return {
+          x: '第 ' + (index + 1 ) + ' 题',
+          y: item
+        }
+      });
+      return res.status(200).send(result);
+    });
   }
 
 }

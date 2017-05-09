@@ -3,6 +3,8 @@
 const uuid = require('node-uuid');
 const user = require('../model/user');
 
+const Token = require('../model/token');
+
 class User {
   login(req, res, next) {
     user.findOne(req.body, (err, doc) => {
@@ -13,7 +15,9 @@ class User {
         return res.sendStatus(404);
       }
 
-      let sessionId = doc._id;
+      let sessionId = uuid.v4();
+      Token.create({userId: doc._id, token: sessionId});
+
       res.setHeader('Set-Cookie', ['sessionId=' + sessionId]);
       return res.sendStatus(200);
     });
@@ -24,12 +28,12 @@ class User {
     let cks = ck.split(';');
 
     cks = cks[0].split('=');
-    let sectionId = cks[1].replace(/\-/g, '');
+    let sectionId = cks[1];
 
-    if (sectionId.length > 24) {
+    if (sectionId.length > 36) {
       return res.sendStatus(403);
     }
-    user.findById(sectionId, (err, doc) => {
+    Token.findOne({token: sectionId}, (err, doc) => {
       if (err) {
         return next(err)
       }

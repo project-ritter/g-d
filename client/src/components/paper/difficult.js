@@ -2,7 +2,7 @@ import {Component} from 'react';
 import rd3 from 'react-d3';
 import superagent from 'superagent';
 
-const BarChart = rd3.BarChart;
+const LineChart = rd3.LineChart;
 
 export default class Difficult extends Component {
 
@@ -12,7 +12,7 @@ export default class Difficult extends Component {
       difficult: [],
       barData: [{
         name: '',
-        values: []
+        values: [{x: 0, y: 0}]
       }]
     };
   }
@@ -38,9 +38,23 @@ export default class Difficult extends Component {
     return (
       <div>
         <div className="col-sm-6">
-          <BarChart data={this.state.barData} width={500} height={300}
-                    title="难度分析结果" yAxisLabel="难度越小题目越难"
-                    xAxisLabel=''/>
+          <LineChart
+            legend={true}
+            data={this.state.barData}
+            width={500}
+            height={300}
+            viewBoxObject={{
+              x: 0,
+              y: 0,
+              width: 500,
+              height: 400
+            }}
+            title="难度分析结果"
+            yAxisLabel="难度"
+            xAxisLabel="题号"
+            domain={{x: [, 10], y: [-10,]}}
+            gridHorizontal={true}
+          />
 
         </div>
         <div className="col-sm-6 difficult">

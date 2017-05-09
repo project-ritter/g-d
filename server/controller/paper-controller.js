@@ -112,7 +112,7 @@ class PaperController {
         });
         result = result.map((item, index) => {
           return {
-            x: '第 ' + (index + 1 ) + ' 题',
+            x: index + 1,
             y: ((item / data.length) / total[index]).toFixed(2)
           }
         });

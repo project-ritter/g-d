@@ -34,9 +34,8 @@ class Main extends Component {
         }
         if (res.statusCode !== 200) {
           page('/login');
-        } else if (res.statusCode === 200) {
+        } else {
           page('/');
-
         }
       });
 
@@ -46,7 +45,7 @@ class Main extends Component {
     return (
       <Router history={browserHistory}>
         <Route path='/login' component={Login}/>
-        <Route path='/' component={Layout} >
+        <Route path='/' component={Layout} onEnter={this.check}>
           <IndexRoute components={Home}/>
           <Route path='index' component={Home}/>
           <Route path='students'>

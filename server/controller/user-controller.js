@@ -14,8 +14,7 @@ class User {
       }
 
       let sessionId = doc._id;
-      // res.setHeader('Set-Cookie', ['sessionId=' + sessionId]);
-      res.cookie('sessionId', sessionId);
+      res.setHeader('Set-Cookie', ['sessionId=' + sessionId]);
       return res.sendStatus(200);
     });
   }
@@ -25,7 +24,7 @@ class User {
     let cks = ck.split(';');
 
     cks = cks[0].split('=');
-    let sectionId = cks[1];
+    let sectionId = cks[1].replace(/\-/g, '');
 
     if (sectionId.length > 24) {
       return res.sendStatus(403);

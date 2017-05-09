@@ -3,8 +3,8 @@ export default [
     id: 1,
     parent: 0,
     level: 1,
-    text: '教师后台管理系统',
-    uri: '/teacher-admin-web',
+    text: '成绩质量定量分析系统',
+    uri: '/home',
     icon: 'home'
   }, {
     id: 2,
@@ -26,6 +26,6 @@ export default [
     level: 2,
     text: '试卷分析',
     uri: '/paper',
-    icon: 'user'
+    icon: 'tachometer'
   }
 ];

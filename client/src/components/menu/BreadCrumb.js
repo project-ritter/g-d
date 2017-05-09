@@ -8,7 +8,7 @@ export default class BreadCrumb extends Component {
         <ul className='no-padding breadcrumb'>
           <li className='no-padding'>
             <i className='ace-icon fa fa-home home-icon'></i>
-            <Link to={'/index'}>教师后台管理系统</Link>
+            <Link to={'/index'}>成绩质量定量分析系统</Link>
           </li>
           {
             this.props.breadcrumb.map((item, index) => {

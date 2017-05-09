@@ -6,7 +6,7 @@ export default (state = {}, action) => {
       let uri = (path === '/' ? '/index' : path);
       let breadcrumb = [];
       navData.find(item => {
-        if (uri.indexOf(item.uri) >= 0) {
+        if (uri.indexOf(item.uri) !== -1) {
           breadcrumb.push(item);
         }
       });

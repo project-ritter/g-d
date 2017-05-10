@@ -3,9 +3,8 @@ const Token = require('../model/token');
 class UserLogoutController {
   logout(req, res, next) {
     let ck = req.headers.cookie;
-    let cks = ck.split(';');
+    let cks = ck.split('=');
 
-    cks = cks[0].split('=');
     let sessionId = cks[1];
 
     Token.findOneAndRemove({token: sessionId}, (err, doc) => {

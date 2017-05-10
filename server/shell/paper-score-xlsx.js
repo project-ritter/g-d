@@ -15,7 +15,8 @@ function paperScoreXlsx() {
         four: {score: items[3], total: 15},
         five: {score: items[4], total: 10},
         six: {score: items[5], total: 25},
-        total: items[0] + items[1] + items[2] + items[3] + items[4] + items[5]
+        total: items[6],
+        program: items[7]
       }
     }
 

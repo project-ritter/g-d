@@ -29,6 +29,7 @@ export default class ProgramType extends Component {
     if (index === this.props.currentProgram) {
       return;
     }
+    this.props.updateCurrentProgram(index);
 
   }
 

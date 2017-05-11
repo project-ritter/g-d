@@ -11,6 +11,12 @@ export default class Body extends Component {
     this.state = {
       currentProgram: 0
     }
+  }
+
+  updateCurrentProgram(index) {
+    this.setState({
+      currentProgram: index
+    });
 
   }
 
@@ -18,7 +24,8 @@ export default class Body extends Component {
     return (
       <div>
         <div className="col-sm-12 program-type">
-          <ProgramType currentProgram={this.state.currentProgram}/>
+          <ProgramType currentProgram={this.state.currentProgram}
+                       updateCurrentProgram={this.updateCurrentProgram.bind(this)}/>
         </div>
         <div>
           <Difficult currentProgram={this.state.currentProgram}/>

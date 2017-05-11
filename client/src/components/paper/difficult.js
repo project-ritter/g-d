@@ -35,6 +35,24 @@ export default class Difficult extends Component {
       })
   }
 
+  componentWillReceiveProps() {
+    superagent
+      .get('/api/paper/difficult')
+      .query({program: this.props.currentProgram})
+      .end((err, res) => {
+        if (err) {
+          throw err;
+        }
+        this.setState({
+          barData: [{
+            name: '',
+            values: res.body
+          }],
+          difficult: res.body
+        });
+      })
+  }
+
   render() {
     return (
       <div>

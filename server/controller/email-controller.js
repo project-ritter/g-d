@@ -7,9 +7,6 @@ const Grade = require('../model/grade');
 
 class EmailController {
   getAll(req, res, next) {
-    console.log('iuewopppppppppptyuio')
-    console.log('sdklfj')
-    console.log(req.body)
 
     let endAverage = 0;
     let totalAverage = 0;

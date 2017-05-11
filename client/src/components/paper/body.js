@@ -17,10 +17,15 @@ export default class Body extends Component {
   render() {
     return (
       <div>
-        <ProgramType currentProgram={this.state.currentProgram}/>
-        <Difficult currentProgram={this.state.currentProgram}/>
-        <Distinct currentProgram={this.state.currentProgram}/>
-        <Validate currentProgram={this.state.currentProgram}/>
+        <div className="col-sm-12 program-type">
+          <ProgramType currentProgram={this.state.currentProgram}/>
+        </div>
+        <div>
+          <Difficult currentProgram={this.state.currentProgram}/>
+          <Distinct currentProgram={this.state.currentProgram}/>
+          <Validate currentProgram={this.state.currentProgram}/>
+        </div>
+
       </div>
     );
   }

@@ -13,7 +13,7 @@ export default class ProgramType extends Component {
 
   componentDidMount() {
     superagent
-      .get('/api/')
+      .get('/api/program')
       .use(noCache)
       .end((err, res) => {
         if (err) {
@@ -25,12 +25,27 @@ export default class ProgramType extends Component {
       })
   }
 
+  handleClick(index) {
+    if (index === this.props.currentProgram) {
+      return;
+    }
+
+  }
+
   render() {
     return (
       <div>
         {
           this.state.programType.map((item, index) => {
-            return (<button key={index} type="button" className="btn btn-primary">{item}</button>);
+            let style = index === this.props.currentProgram ? 'info' : 'default';
+            return (
+              <div className="col-sm-1">
+                <button key={index} type="button"
+                        className={"btn btn-lg btn-" + style}
+                        onClick={this.handleClick.bind(this, index)}>
+                  {item}
+                </button>
+              </div>);
           })
         }
       </div>

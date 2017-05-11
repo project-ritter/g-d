@@ -34,12 +34,21 @@ const mapKey = [{
   value: 6
 }];
 
-const getDistinct = ({key, result}, callback) => {
-  let total, len;
+const getDistinct = ({key, result, program}, callback) => {
+  let total, len, programType;
   async.waterfall([
     (done) => {
+      PaperScore.find({}).distinct('program').exec((err, docs) => {
+        if (err) {
+          return next(err);
+        }
+        programType = docs;
+        done(null, docs);
+      });
+    },
+    (data, done) => {
       let sortKey = key + '.score';
-      PaperScore.find({}).sort(sortKey).exec(done);
+      PaperScore.find({program: programType[program]}).sort(sortKey).exec(done);
     },
     (data, done) => {
       total = getAllTotal(data);
@@ -139,8 +148,9 @@ class PaperController {
 
   calculateDistinct(req, res, next) {
     let result = [];
+    let program = req.query.program;
     async.each(mapKey, (item, callback) => {
-      getDistinct({key: item.key, result}, callback);
+      getDistinct({key: item.key, result, program}, callback);
     }, (err) => {
       if (err) {
         return next(err);

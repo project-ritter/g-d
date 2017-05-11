@@ -167,13 +167,22 @@ class PaperController {
   }
 
   calculateValidate(req, res, next) {
-
+    let program = req.query.program;
     let result = [];
     let len;
-
+    let programType;
     async.waterfall([
       (done) => {
-        PaperScore.find({}, done);
+        PaperScore.find({}).distinct('program').exec((err, docs) => {
+          if (err) {
+            return next(err);
+          }
+          programType = docs;
+          done(null, docs);
+        });
+      },
+      (date, done) => {
+        PaperScore.find({program: programType[program]}, done);
       },
       (docs, done) => {
         validateKey.forEach((item) => {

@@ -35,10 +35,10 @@ export default class Difficult extends Component {
       })
   }
 
-  componentWillReceiveProps() {
+  componentWillReceiveProps(next) {
     superagent
       .get('/api/paper/difficult')
-      .query({program: this.props.currentProgram})
+      .query({program: next.currentProgram})
       .end((err, res) => {
         if (err) {
           throw err;

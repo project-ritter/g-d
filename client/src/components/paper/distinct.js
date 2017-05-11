@@ -33,10 +33,10 @@ export default class Distinct extends Component {
       })
   }
 
-  componentWillReceiveProps() {
+  componentWillReceiveProps(next) {
     superagent
       .get('/api/paper/distinct')
-      .query({program: this.props.currentProgram})
+      .query({program: next.currentProgram})
       .end((err, res) => {
         if (err) {
           throw err;

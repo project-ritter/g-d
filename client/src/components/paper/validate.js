@@ -35,6 +35,24 @@ export default class Validate extends Component {
       })
   }
 
+  componentWillReceiveProps(next) {
+    superagent
+      .get('/api/paper/validate')
+      .query({program: next.currentProgram})
+      .end((err, res) => {
+        if (err) {
+          throw err;
+        }
+        this.setState({
+          barData: [{
+            name: '',
+            values: res.body
+          }],
+          validate: res.body
+        });
+      })
+  }
+
   render() {
     return (
       <div>

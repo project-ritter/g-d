@@ -92,12 +92,22 @@ const getValidate = ({docs, item}) => {
 class PaperController {
 
   calculateDifficult(req, res, next) {
-
+    let program = req.query.program;
     let result = [0, 0, 0, 0, 0, 0,];
     let total = [];
+    let programType;
     async.waterfall([
       (done) => {
-        PaperScore.find({}, done);
+        PaperScore.find({}).distinct('program').exec((err, docs) => {
+          if (err) {
+            return next(err);
+          }
+          programType = docs;
+          done(null, docs);
+        });
+      },
+      (date, done) => {
+        PaperScore.find({program: programType[program]}, done);
       },
       (data, done) => {
         total = getAllTotal(data);

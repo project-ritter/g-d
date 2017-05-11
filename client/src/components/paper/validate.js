@@ -20,6 +20,7 @@ export default class Validate extends Component {
   componentDidMount() {
     superagent
       .get('/api/paper/validate')
+      .query({program: this.props.currentProgram})
       .end((err, res) => {
         if (err) {
           throw err;

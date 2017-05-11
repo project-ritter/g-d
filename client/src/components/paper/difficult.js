@@ -20,6 +20,7 @@ export default class Difficult extends Component {
   componentDidMount() {
     superagent
       .get('/api/paper/difficult')
+      .query({program: this.props.currentProgram})
       .end((err, res) => {
         if (err) {
           throw err;

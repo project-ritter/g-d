@@ -18,6 +18,7 @@ export default class Distinct extends Component {
   componentWillMount() {
     superagent
       .get('/api/paper/distinct')
+      .query({program: this.props.currentProgram})
       .end((err, res) => {
         if (err) {
           throw err;

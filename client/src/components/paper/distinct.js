@@ -33,6 +33,24 @@ export default class Distinct extends Component {
       })
   }
 
+  componentWillReceiveProps() {
+    superagent
+      .get('/api/paper/distinct')
+      .query({program: this.props.currentProgram})
+      .end((err, res) => {
+        if (err) {
+          throw err;
+        }
+        this.setState({
+          scatterData: [{
+            name: '',
+            values: res.body
+          }],
+          distinct: res.body
+        });
+      })
+  }
+
   render() {
     return (
       <div>

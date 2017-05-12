@@ -58,23 +58,21 @@ export default class ScoreHeader extends Component {
         <div className="form-horizontal email">
           <div className="form-group">
 
-            <div className="col-sm-5">
-              <InputWrapper warning={this.state.emailError}>
-                <div className={!this.state.emailError ? 'input-info row' : 'input-info-null row'}>
-                  <div className='col-xs-11 no-padding'>
-                    <input type='text' className='input-form col-xs-8' placeholder='Email'
-                           ref={(ref) => {
-                             this.userEmail = ref;
-                           }}
-                           onFocus={this.resetError.bind(this)}
-                           onBlur={this.checkEmail.bind(this)}/>
-                  </div>
+            <InputWrapper warning={this.state.emailError}>
+              <div className={!this.state.emailError ? 'input-info row' : 'input-info-null row'}>
+                <div className='col-xs-4 no-padding'>
+                  <input type='text' className='input-form col-xs-11' placeholder='Email'
+                         ref={(ref) => {
+                           this.userEmail = ref;
+                         }}
+                         onFocus={this.resetError.bind(this)}
+                         onBlur={this.checkEmail.bind(this)}/>
                 </div>
-              </InputWrapper>
-            </div>
-            <button type="submit" className="btn btn-info"
-                    onClick={this.sendEmail.bind(this)}>获取成绩分析结果
-            </button>
+                <button type="submit" className="btn btn-info"
+                        onClick={this.sendEmail.bind(this)}>获取成绩分析结果
+                </button>
+              </div>
+            </InputWrapper>
 
           </div>
         </div>

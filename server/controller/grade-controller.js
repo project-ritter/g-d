@@ -40,6 +40,7 @@ class GradeController {
         Grade.find({info: ''}, done);
       },
       (data, done) => {
+      console.log(data)
         len = data.length;
         data = data.map(({end, total}) => {
           return {end, total};

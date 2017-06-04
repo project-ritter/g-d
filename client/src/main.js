@@ -38,7 +38,6 @@ class Main extends Component {
           page('/');
         }
       });
-
   }
 
   render() {

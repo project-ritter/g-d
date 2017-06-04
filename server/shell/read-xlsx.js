@@ -15,10 +15,11 @@ function readXlsx() {
       middle: parseInt(items[3] === undefined ? 0 : items[3]),
       exc: parseInt(items[4] === undefined ? 0 : items[4]),
       end: parseInt(items[5] === undefined ? 0 : items[5]),
-      total: parseInt(items[6] === undefined ? 0 : items[6]),
+      total: parseInt(items[6] === undefined ? 0 : items[2] * 0.3 + items[5] * 0.7),
       info: items[7] === undefined ? '' : items[7],
     }
   });
+  console.log(grade)
   return grade;
 }
 module.exports = readXlsx;
